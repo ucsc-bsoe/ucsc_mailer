@@ -1,25 +1,67 @@
-# core.entity_view_display.node.mailer.default.yml
 langcode: en
 status: true
 dependencies:
-    config:
-        - field.field.node.mailer.body
-        - node.type.mailer
-    module:
-        - text
-        - user
+  config:
+    - field.field.node.mailer.field_mailer_body
+    - field.field.node.mailer.field_mailer_bcc
+    - field.field.node.mailer.field_mailer_recipient
+    - field.field.node.mailer.field_mailer_sender
+    - field.field.node.mailer.field_mailer_sender_address
+    - field.field.node.mailer.field_mailer_sub_title
+    - node.type.mailer
+  module:
+    - text
+    - user
 id: node.mailer.default
 targetEntityType: node
 bundle: mailer
 mode: default
 content:
-    body:
-        label: hidden
-        type: text_default
-        weight: 101
-        settings: {  }
-        third_party_settings: {  }
-    links:
-        weight: 100
-hidden: {  }
-
+  field_mailer_body:
+    label: inline
+    type: text_default
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_mailer_bcc:
+    weight: 5
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_mailer_recipient:
+    weight: 4
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_mailer_sender:
+    weight: 1
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_mailer_sender_address:
+    weight: 2
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_mailer_sub_title:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  links: true

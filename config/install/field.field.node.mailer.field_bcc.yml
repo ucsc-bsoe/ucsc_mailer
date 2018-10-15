@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mailer_bcc
+    - node.type.mailer
+id: node.mailer.field_mailer_bcc
+field_name: field_mailer_bcc
+entity_type: node
+bundle: mailer
+label: BCC
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

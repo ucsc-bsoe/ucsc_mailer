@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mailer_sender_address
+    - node.type.mailer
+id: node.mailer.field_mailer_sender_address
+field_name: field_mailer_sender_address
+entity_type: node
+bundle: mailer
+label: 'Sender Address'
+description: 'Enter the e-mail address that this message should appear to come from.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

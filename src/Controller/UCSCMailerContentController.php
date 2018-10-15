@@ -30,7 +30,7 @@ class UCSCMailerContentController extends ControllerBase {
     $jobs_toc = $jobs[0];
     $jobs_list = $jobs[1];
 
-    $total_message = "<div class='email-body'>" .
+    $total_message = "<div class='email-field_mailer_body'>" .
       $header .
       "<div class='mailer-item'>" .
       $announcements_new . $announcements_toc . $events_toc . $jobs_toc .
@@ -65,7 +65,7 @@ class UCSCMailerContentController extends ControllerBase {
           "<h3><a name='announce-" . $node->get('nid')->value . "' href='https://undergrad.soe.ucsc.edu" . $node->toUrl('canonical')
           ->toString() . "'>"
           . $node->get('title')->value . "</a></h3>" .
-          $node->get('body')->value  . "<hr>";
+          $node->get('field_mailer_body')->value  . "<hr>";
           $toc =  $toc . "<a href='#announce-" . $node->get('nid')->value . "'>" . $node->get('title')->value . "</a><br>";
           $announcement_start_date = strtotime($node->get('field_start_date')->value);
           $one_week_ago = strtotime('-1 week');
@@ -108,7 +108,7 @@ class UCSCMailerContentController extends ControllerBase {
           . $node->get('title')->value . "</a></h3>" .
           "<strong>Event Date and Time:</strong> " . $time . "<br>" .
           "<strong>Event Location:</strong> " . $node->get('field_event_location')->value . "<br>" .
-          $node->get('body')->value  . "<hr>";
+          $node->get('field_mailer_body')->value  . "<hr>";
         $toc = $toc . "<a href='#event-" . $node->get('nid')->value . "'>" . $node->get('title')->value . "</a><br>";
         }
       }
@@ -141,7 +141,7 @@ class UCSCMailerContentController extends ControllerBase {
           "<h3><a name='job-" . $node->get('nid')->value . "' href='https://undergrad.soe.ucsc.edu" . $node->toUrl('canonical')
           ->toString() . "'>"
           . $node->get('title')->value . "</a></h3>" .
-          $node->get('body')->value . "<hr>";
+          $node->get('field_mailer_body')->value . "<hr>";
         $toc = $toc . "<a href='#job-" . $node->get('nid')->value . "'>" . $node->get('title')->value . "</a><br>";
 	}
       }

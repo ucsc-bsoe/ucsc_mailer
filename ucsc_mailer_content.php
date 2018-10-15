@@ -72,8 +72,8 @@ function ucsc_mailer_content() {
 //        check_plain($node->title) .
 //        "</a></h3>\n" .
 //        check_markup(
-//          $node->body[LANGUAGE_NONE][0]["value"],
-//          $node->body[LANGUAGE_NONE][0]["format"]
+//          $node->field_mailer_body[LANGUAGE_NONE][0]["value"],
+//          $node->field_mailer_body[LANGUAGE_NONE][0]["format"]
 //        ) .
 //        "\n";
 //

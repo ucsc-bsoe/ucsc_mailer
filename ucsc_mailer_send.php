@@ -48,11 +48,11 @@ function ucsc_mailer_send() {
     $node = Node::create(['type' => 'ucsc_mailer']);
     $node->set('title', 'Mailer for ' . date('m/d/Y'));
 
-    $body = [
+    $field_mailer_body = [
       'value' => $mailer_content,
       'format' => 'full_html',
      ];
-    $node->set('body', $body);
+    $node->set('field_mailer_body', $field_mailer_body);
     //$node->set('uid', <uid>);
     $node->status = 1;
     //$node->enforceIsNew();

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mailer_recipient
+    - node.type.mailer
+id: node.mailer.field_mailer_recipient
+field_name: field_mailer_recipient
+entity_type: node
+bundle: mailer
+label: Recipient
+description: 'You can separate multiple destination addresses with commas. While you are testing, you should enter your own e-mail address for the recipient.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

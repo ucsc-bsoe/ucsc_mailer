@@ -22,12 +22,12 @@ function ucsc_mailer_mail($key, &$message, $params) {
     case 'mailer_create_submission':
       $message['subject'] = t('BSOE Mailer Submission: @title',
         array('@title' => $params['node_title'])) . " created on: " . date("m-d-Y h:i");
-      $message['body'][] = $params['body'];
+      $message['field_mailer_body'][] = $params['field_mailer_body'];
       break;
    
     /*case 'mailer_weekly':
       $message['subject'] = 'BSOE Undergraduate Mailer for ' . date("m/d/Y");
-      $message['body'][] = $params['message'];
+      $message['field_mailer_body'][] = $params['message'];
       break;
      */
  }
@@ -44,7 +44,7 @@ function ucsc_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
     $mailManager = \Drupal::service('plugin.manager.mail');
     $module = 'ucsc_mailer';
     $key = 'mailer_create_submission';
-    $to = $entity->get('field_recipient')->value;
+    $to = $entity->get('field_mailer_recipient')->value;
     $langcode = \Drupal::currentUser()->getPreferredLangcode();
 
     // Creating the params for this message.
@@ -53,12 +53,12 @@ function ucsc_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
 
     // Use those to create the message. We add inline styles so that it shows up
     // in the email.
-    $body = Markup::create($entity->get('body')->value);
+    $field_mailer_body = Markup::create($entity->get('field_mailer_body')->value);
 
     //$link = $entity->toUrl()->toString();
-    $params['body'] = Markup::create($body);
+    $params['field_mailer_body'] = Markup::create($field_mailer_body);
 
-    $from = $entity->get('field_sender_address');
+    $from = $entity->get('field_mailer_sender_address');
     $send = true;
     $result = $mailManager->mail($module, $key, $to, $langcode, $params, $from, $send);
 

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mailer_sender
+    - node.type.mailer
+id: node.mailer.field_mailer_sender
+field_name: field_mailer_sender
+entity_type: node
+bundle: mailer
+label: 'Sender Name'
+description: 'Enter the name that this message should appear to come from.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

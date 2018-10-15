@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mailer_sub_title
+    - node.type.mailer
+id: node.mailer.field_mailer_sub_title
+field_name: field_mailer_sub_title
+entity_type: node
+bundle: mailer
+label: Sub-Title
+description: "Enter a sub-title that will appear directly below the title.\r\n"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

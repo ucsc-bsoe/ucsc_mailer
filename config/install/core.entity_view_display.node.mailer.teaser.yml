@@ -1,26 +1,39 @@
-# core.entity_view_display.node.mailer.teaser.yml
 langcode: en
 status: true
 dependencies:
-    config:
-        - core.entity_view_mode.node.teaser
-        - field.field.node.mailer.body
-        - node.type.mailer
-    module:
-        - text
-        - user
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.mailer.field_mailer_body
+    - field.field.node.mailer.field_mailer_bcc
+    - field.field.node.mailer.field_mailer_recipient
+    - field.field.node.mailer.field_mailer_sender
+    - field.field.node.mailer.field_mailer_sender_address
+    - field.field.node.mailer.field_mailer_sub_title
+    - node.type.mailer
+  module:
+    - text
+    - user
 id: node.mailer.teaser
 targetEntityType: node
 bundle: mailer
 mode: teaser
 content:
-    body:
-        label: hidden
-        type: text_summary_or_trimmed
-        weight: 101
-        settings:
-            trim_length: 600
-        third_party_settings: {  }
-    links:
-        weight: 100
-hidden: {  }
+  field_mailer_body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_mailer_bcc: true
+  field_mailer_recipient: true
+  field_mailer_sender: true
+  field_mailer_sender_address: true
+  field_mailer_sub_title: true
