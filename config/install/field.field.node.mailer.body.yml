@@ -1,0 +1,22 @@
+# field.field.node.mailer.body.yml
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.node.body
+        - node.type.mailer
+    module:
+        - text
+id: node.mailer.body
+field_name: body
+entity_type: node
+bundle: mailer
+label: Body
+description: 'Body for the email.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+    display_summary: true
+field_type: text_with_summary

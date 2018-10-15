@@ -1,0 +1,25 @@
+# core.entity_view_display.node.mailer.default.yml
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.field.node.mailer.body
+        - node.type.mailer
+    module:
+        - text
+        - user
+id: node.mailer.default
+targetEntityType: node
+bundle: mailer
+mode: default
+content:
+    body:
+        label: hidden
+        type: text_default
+        weight: 101
+        settings: {  }
+        third_party_settings: {  }
+    links:
+        weight: 100
+hidden: {  }
+
