@@ -8,3 +8,5 @@ Sender: Swift Mailer
 Theme: BSOE Plain  
 
 Don't forget!
+
+Testing git config.
