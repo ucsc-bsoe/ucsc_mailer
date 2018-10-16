@@ -1,4 +1,0 @@
-#services:
-#  plugin.manager.ucscmailermail:
-#    class: Drupal\ucsc_mailer\Plugin\UCSCMailerHTMLMail
-#    parent: default_plugin_manager

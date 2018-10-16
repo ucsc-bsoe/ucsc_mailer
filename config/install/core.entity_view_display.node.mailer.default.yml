@@ -2,12 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.mailer.field_mailer_body
-    - field.field.node.mailer.field_mailer_bcc
-    - field.field.node.mailer.field_mailer_recipient
-    - field.field.node.mailer.field_mailer_sender
-    - field.field.node.mailer.field_mailer_sender_address
-    - field.field.node.mailer.field_mailer_sub_title
     - node.type.mailer
   module:
     - text
