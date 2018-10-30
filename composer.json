@@ -1,0 +1,15 @@
+{
+  "name": "drupal/ucsc_mailer",
+  "description": "UCSC Mailer creates a content type that will send an email and keep track of emails.",
+  "type": "drupal-custom-module",
+  "homepage": "https://github.com/ucsc-bsoe/ucsc_mailer",
+  "authors": [
+    {
+      "name": "Kristin Bradham",
+      "homepage": "https://www.drupal.org/u/kristindev",
+      "role": "Maintainer"
+    }
+  ],
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev"
+}
