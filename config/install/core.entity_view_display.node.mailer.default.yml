@@ -53,7 +53,7 @@ content:
     label: inline
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    type: string
     region: content
   field_mailer_sub_title:
     weight: 0

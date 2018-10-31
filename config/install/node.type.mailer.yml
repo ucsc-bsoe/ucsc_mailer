@@ -1,8 +1,9 @@
 langcode: en
 status: true
 dependencies:
-  module:
-    - menu_ui
+  enforced:
+    module:
+      - ucsc_mailer
 third_party_settings:
   menu_ui:
     available_menus:
@@ -10,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: Mailer
 type: mailer
-description: ''
+description: 'Send an email from this site.'
 help: ''
 new_revision: false
 preview_mode: 0

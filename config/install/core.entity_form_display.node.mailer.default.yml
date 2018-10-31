@@ -55,7 +55,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: email_default
+    type: string_textfield 
     region: content
   field_mailer_sub_title:
     weight: 1

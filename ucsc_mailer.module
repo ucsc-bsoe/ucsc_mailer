@@ -38,28 +38,33 @@ function ucsc_mailer_mail($key, &$message, $params) {
 */
 function ucsc_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
 
-  // Restrict to entities that need a notification
+  // Is this the mailer entity?
   if ($entity->bundle() === 'mailer') {
 
+    // Build mail manager.
     $mailManager = \Drupal::service('plugin.manager.mail');
     $module = 'ucsc_mailer';
     $key = 'mailer_create';
-    $to = $entity->get('field_mailer_recipient')->value;
     $langcode = \Drupal::currentUser()->getPreferredLangcode();
+   
+    // Who is this mail sent to (recipient)?
+    $to = $entity->get('field_mailer_recipient')->value;
 
-    // Creating the params for this message.
-    // Get information from this entity.
-    $params['node_title'] = $entity->label();
-
-    // Use those to create the message. We add inline styles so that it shows up
-    // in the email.
+    // Create the mailer body from the body field. Add markup from WYSIWYG.
     $field_mailer_body = Markup::create($entity->get('field_mailer_body')->value);
 
+    // Create some parameters we can use in the actual message..
+    $params['node_title'] = $entity->label();
     //$link = $entity->toUrl()->toString();
     $params['field_mailer_body'] = Markup::create($field_mailer_body);
 
-    $from = 'kbradham@ucsc.edu';//$entity->get('field_mailer_sender_address');
+    // Who is this message from (sender address)?
+    $from = $entity->get('field_mailer_sender_address')->value;
+
+    // Set send to true.
     $send = true;
+
+    // Send all to the mail manager.   
     $result = $mailManager->mail($module, $key, $to, $langcode, $params, $from, $send);
 
     // Notify of the result.
@@ -69,10 +74,5 @@ function ucsc_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
     else {
       drupal_set_message(t('Your message has been sent.'));
     }
-
-    drupal_set_message(t('A mailer was created'));
-  } else {
-    drupal_set_message(t('Nope'));
-    return;
-  }
+  } 
 }
