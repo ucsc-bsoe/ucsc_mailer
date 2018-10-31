@@ -3,8 +3,8 @@
 use Drupal\Core\Render\Markup;
 
 function ucsc_mailer_cron() {
-  require_once("ucsc_mailer_send.php");
-	ucsc_mailer_send();
+//  require_once("ucsc_mailer_send.php");
+//	ucsc_mailer_send();
 }
 
 /**
@@ -19,8 +19,8 @@ function ucsc_mailer_cron() {
 function ucsc_mailer_mail($key, &$message, $params) {
   $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';	
   switch ($key) {
-    case 'mailer_create_submission':
-      $message['subject'] = t('BSOE Mailer Submission: @title',
+    case 'mailer_create':
+      $message['subject'] = t('New BSOE Mailer created: @title',
         array('@title' => $params['node_title'])) . " created on: " . date("m-d-Y h:i");
       $message['field_mailer_body'][] = $params['field_mailer_body'];
       break;
@@ -43,7 +43,7 @@ function ucsc_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
 
     $mailManager = \Drupal::service('plugin.manager.mail');
     $module = 'ucsc_mailer';
-    $key = 'mailer_create_submission';
+    $key = 'mailer_create';
     $to = $entity->get('field_mailer_recipient')->value;
     $langcode = \Drupal::currentUser()->getPreferredLangcode();
 
@@ -58,7 +58,7 @@ function ucsc_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
     //$link = $entity->toUrl()->toString();
     $params['field_mailer_body'] = Markup::create($field_mailer_body);
 
-    $from = $entity->get('field_mailer_sender_address');
+    $from = 'kbradham@ucsc.edu';//$entity->get('field_mailer_sender_address');
     $send = true;
     $result = $mailManager->mail($module, $key, $to, $langcode, $params, $from, $send);
 
@@ -69,7 +69,10 @@ function ucsc_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
     else {
       drupal_set_message(t('Your message has been sent.'));
     }
+
+    drupal_set_message(t('A mailer was created'));
   } else {
+    drupal_set_message(t('Nope'));
     return;
   }
 }
