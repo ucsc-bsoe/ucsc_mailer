@@ -6,6 +6,9 @@ dependencies:
     - node.type.mailer
   module:
     - text
+  enforced:
+    module:
+      - ucsc_mailer
 id: node.mailer.field_mailer_body
 field_name: field_mailer_body
 entity_type: node

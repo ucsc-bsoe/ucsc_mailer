@@ -3,6 +3,9 @@ status: true
 dependencies:
   module:
     - node
+  enforced:
+    module:
+      - ucsc_mailer
 id: node.field_mailer_sender_address
 field_name: field_mailer_sender_address
 entity_type: node

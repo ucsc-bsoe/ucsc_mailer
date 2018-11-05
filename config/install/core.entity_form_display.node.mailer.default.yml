@@ -11,6 +11,9 @@ dependencies:
     - node.type.mailer
   module:
     - text
+  enforced:
+    module:
+      - ucsc_mailer
 id: node.mailer.default
 targetEntityType: node
 bundle: mailer

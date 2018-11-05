@@ -4,6 +4,9 @@ dependencies:
   config:
     - field.storage.node.field_mailer_bcc
     - node.type.mailer
+  enforced:
+    module:
+      - ucsc_mailer
 id: node.mailer.field_mailer_bcc
 field_name: field_mailer_bcc
 entity_type: node

@@ -4,6 +4,9 @@ dependencies:
   config:
     - field.storage.node.field_mailer_sender_address
     - node.type.mailer
+  enforced:
+    module:
+      - ucsc_mailer
 id: node.mailer.field_mailer_sender_address
 field_name: field_mailer_sender_address
 entity_type: node

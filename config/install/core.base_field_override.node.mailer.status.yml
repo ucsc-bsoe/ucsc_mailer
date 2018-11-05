@@ -4,6 +4,9 @@ status: true
 dependencies:
   config:
     - node.type.mailer
+  enforced:
+    module:
+      - ucsc_mailer
 id: node.mailer.status
 field_name: status
 entity_type: node
