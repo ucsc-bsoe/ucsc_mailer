@@ -21,6 +21,10 @@ function ucsc_mailer_sender_mail($entity) {
     // Create some parameters we can use in the actual message..
     $params['node_title'] = $entity->label();
     //$link = $entity->toUrl()->toString();
+    $params['field_mailer_sender_address'] = $entity->get('field_mailer_sender_address')->value;
+    $params['field_mailer_sender'] = $entity->get('field_mailer_sender')->value;
+    $params['field_mailer_sub_title'] = $entity->get('field_mailer_sub_title')->value;
+    $params['field_mailer_bcc'] = $entity->get('field_mailer_bcc')->value;
     $params['field_mailer_body'] = Markup::create($field_mailer_body);
 
     // Who is this message from (sender address)?
