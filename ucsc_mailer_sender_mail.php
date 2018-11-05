@@ -38,7 +38,7 @@ function ucsc_mailer_sender_mail($entity) {
 
     // Notify of the result.
     if ($result['result'] !== true) {
-      drupal_set_message(t('There was a problem sending your message and it was not sent.'), 'error');
+      drupal_set_message(t('There was a problem sending your message and it was not sent, whoops.'), 'error');
     }
     else {
       drupal_set_message(t('Your message has been sent.'));
