@@ -4,6 +4,10 @@ dependencies:
   enforced:
     module:
       - ucsc_mailer
+  module:
+      - swiftmailer
+install:
+  - swiftmailer
 third_party_settings:
   menu_ui:
     available_menus:
