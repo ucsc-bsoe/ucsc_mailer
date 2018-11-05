@@ -16,7 +16,7 @@ third_party_settings:
     parent: 'main:'
 name: Mailer
 type: mailer
-description: 'Send an email from this site.'
+description: 'Allows mailer to send an email and keep a log of emails sent.'
 help: ''
 new_revision: false
 preview_mode: 0
