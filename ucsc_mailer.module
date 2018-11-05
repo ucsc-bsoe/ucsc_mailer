@@ -3,6 +3,7 @@
 use Drupal\ucsc_mailer\Controller\UCSCMailerSenderMail;
 use Drupal\Core\Render\Markup;
 use Drupal\node\Entity\Node;
+use \Drupal\Component\Utility\Unicode;
 
 /**
 * Implements hook_mail(). Notes on configuration of mail. Must use Swift Mailer.
