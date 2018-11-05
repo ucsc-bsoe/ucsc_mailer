@@ -8,6 +8,7 @@ dependencies:
       - swiftmailer
 install:
   - swiftmailer
+  - mailsystem
 third_party_settings:
   menu_ui:
     available_menus:
