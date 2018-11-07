@@ -45,3 +45,13 @@ function ucsc_mailer_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
   require_once("ucsc_mailer_sender_mail.php");
   ucsc_mailer_sender_mail($entity);
 }
+
+/**
+ * Implements hook_preprocess_swiftmailer().
+ */
+function ucsc_mailer_preprocess_swiftmailer(&$variables) {
+  global $base_path;
+  $pattern = '/(src|href)=(\'|")' . preg_quote($base_path, '/') . '/';
+  $replacement = '$1=$2' . \Drupal\Core\Url::fromRoute('<front>', array(), array('absolute' => TRUE))->toString();
+  $variables['body'] = \Drupal\Core\Render\Markup::create(preg_replace($pattern, $replacement, $variables['body']));
+}
