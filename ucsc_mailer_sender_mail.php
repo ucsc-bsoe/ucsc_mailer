@@ -25,7 +25,7 @@ function ucsc_mailer_sender_mail($entity) {
     $params['field_mailer_sender'] = $entity->get('field_mailer_sender')->value;
     $params['field_mailer_sub_title'] = $entity->get('field_mailer_sub_title')->value;
     $params['field_mailer_bcc'] = $entity->get('field_mailer_bcc')->value;
-    $params['field_mailer_body'] = $entity->get('field_mailer_body');//Markup::create($field_mailer_body);
+    $params['field_mailer_body'] = $entity->get('field_mailer_body')->value;//Markup::create($field_mailer_body);
 
     // Who is this message from (sender address)?
     $from = $entity->get('field_mailer_sender_address')->value;
