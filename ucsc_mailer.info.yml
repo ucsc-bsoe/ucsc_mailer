@@ -4,7 +4,7 @@ description: Mailer for undergrad site.
 core: 8.x
 version: 0.1
 package: UCSC
-dependancies:
+dependencies:
   - mailsystem
   - swiftmailer
 install:
