@@ -7,5 +7,7 @@ Formatter: Swift Mailer
 Sender: Swift Mailer  
 Theme: BSOE Plain  
 
-Don't forget!
+Go to: /admin/config/swiftmailer/transport
+Transport types: SMTP
 
+Don't forget!
