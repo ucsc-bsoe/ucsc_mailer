@@ -17,6 +17,7 @@ function ucsc_mailer_sender_mail($entity) {
 
     // Create the mailer body from the body field. Add markup from WYSIWYG.
     $field_mailer_body = Markup::create($entity->get('field_mailer_body')->value);
+    $field_mailer_sub_title = Markup::create($entity->get('field_mailer_sub_title')->value);
 
     // Create some parameters we can use in the actual message..
     $params['node_title'] = $entity->label();
@@ -25,8 +26,7 @@ function ucsc_mailer_sender_mail($entity) {
     $params['field_mailer_sender'] = $entity->get('field_mailer_sender')->value;
     $params['field_mailer_sub_title'] = $entity->get('field_mailer_sub_title')->value;
     $params['field_mailer_bcc'] = $entity->get('field_mailer_bcc')->value;
-    $params['field_mailer_body'] = $field_mailer_body;
-    $message['body'] = $field_mailer_body;
+    $params['body'] = $field_mailer_sub_title . $field_mailer_body;
 
     // Who is this message from (sender address)?
     $from = $entity->get('field_mailer_sender_address')->value;
