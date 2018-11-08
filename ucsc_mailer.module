@@ -20,7 +20,7 @@ function ucsc_mailer_mail($key, &$message, $params) {
     case 'mailer_create':
       $message['headers']['From'] = $params['field_mailer_sender'];
       $message['subject'] = $params['node_title'];
-      $message['body'][] = $params['field_mailer_body'];
+      $message['body'] = $params['field_mailer_body'];
       $message['headers']['Bcc'] = $params['field_mailer_bcc'];
       # $message['headers']['Sender'] = $params['field_mailer_sender_address'];
       # $message['from'] = $params['field_mailer_sender'];
