@@ -3,7 +3,7 @@ use Drupal\Core\Render\Markup;
 
 function ucsc_mailer_sender_send($entity) {
   // Is this the mailer entity?
-  if ($entity->bundle() === 'mailer') {
+  if ($entity->bundle() === 'mailer' && $entity->get('moderation_state')->getString() === "Publish") {
 
     // Build mail manager.
     $mailManager = \Drupal::service('plugin.manager.mail');
@@ -18,14 +18,10 @@ function ucsc_mailer_sender_send($entity) {
     $field_mailer_body = Markup::create($entity->get('field_mailer_body')->value);
 
     // Change URLS to absolute paths
-
     global $base_path;
     $pattern = '/(src|href)=(\'|")' . preg_quote($base_path, '/') . '/';
     $replacement = '$1=$2' . \Drupal\Core\Url::fromRoute('<front>', array(), array('absolute' => TRUE))->toString();
     $field_mailer_body_urls = \Drupal\Core\Render\Markup::create(preg_replace($pattern, $replacement, $field_mailer_body));
-
-
-    //$field_mailer_sub_title = Markup::create($entity->get('field_mailer_sub_title')->value);
 
     // Create some parameters we can use in the actual message..
     $params['node_title'] = $entity->label();
