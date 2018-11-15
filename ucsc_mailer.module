@@ -18,13 +18,21 @@ function ucsc_mailer_mail($key, &$message, $params) {
   $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';	
   switch ($key) {
     case 'mailer_create':
-      $message['headers']['From'] = $params['field_mailer_sender'];
       $message['subject'] = $params['node_title'];
-      $message['body'][] = $params['body'];
-      $message['headers']['Bcc'] = $params['field_mailer_bcc'];
-      # $message['headers']['Sender'] = $params['field_mailer_sender_address'];
-      # $message['from'] = $params['field_mailer_sender'];
+      $message['body'][] = ucsc_mailer_base($params['body']);
+
+      // Set the header 'From'
       $message['from'] = $message['headers']['From'] = (!empty($params['field_mailer_sender'])) ? Unicode::mimeHeaderEncode($params['field_mailer_sender'], TRUE) . ' <' . $params['field_mailer_sender_address'] . '>' : $params['field_mailer_sender_address'];
+
+      // Set the header 'Bcc'
+      if (!empty($params['field_mailer_bcc'])) {
+         $message['headers']['Bcc'] = $params['field_mailer_bcc'];
+      }
+
+      // Set the 'reply-to'
+      $message['reply-to'] = $message['headers']['Reply-to'] = $params['field_mailer_sender_address'];
+
+      // Set the header 'Sender'
       $message['headers']['Sender'] = ($params['field_mailer_sender']) ? Unicode::mimeHeaderEncode($params['field_mailer_sender'], TRUE) . ' <' . $params['field_mailer_sender_address'] . '>' : $params['field_mailer_sender_address'];
       break;
  }
@@ -49,9 +57,10 @@ function ucsc_mailer_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
 /**
  * Implements hook_preprocess_swiftmailer().
  */
-function ucsc_mailer_preprocess_swiftmailer(&$variables) {
+function ucsc_mailer_base($text) {
   global $base_path;
   $pattern = '/(src|href)=(\'|")' . preg_quote($base_path, '/') . '/';
   $replacement = '$1=$2' . \Drupal\Core\Url::fromRoute('<front>', array(), array('absolute' => TRUE))->toString() . "Hello there";
-  $variables['body'] = \Drupal\Core\Render\Markup::create(preg_replace($pattern, $replacement, $variables['body']));
+  $change_base_path = \Drupal\Core\Render\Markup::create(preg_replace($pattern, $replacement, $text));
+  return $change_base_path;
 }
