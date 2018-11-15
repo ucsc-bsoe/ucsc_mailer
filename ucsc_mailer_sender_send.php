@@ -16,6 +16,15 @@ function ucsc_mailer_sender_send($entity) {
 
     // Create the mailer body from the body field. Add markup from WYSIWYG.
     $field_mailer_body = Markup::create($entity->get('field_mailer_body')->value);
+
+    // Change URLS to absolute paths
+
+    global $base_path;
+    $pattern = '/(src|href)=(\'|")' . preg_quote($base_path, '/') . '/';
+    $replacement = '$1=$2' . \Drupal\Core\Url::fromRoute('<front>', array(), array('absolute' => TRUE))->toString() . "Hello there";
+    $field_mailer_body_urls = \Drupal\Core\Render\Markup::create(preg_replace($pattern, $replacement, $field_mailer_body));
+
+
     //$field_mailer_sub_title = Markup::create($entity->get('field_mailer_sub_title')->value);
 
     // Create some parameters we can use in the actual message..
@@ -25,7 +34,7 @@ function ucsc_mailer_sender_send($entity) {
     $params['field_mailer_sender'] = $entity->get('field_mailer_sender')->value;
     $params['field_mailer_sub_title'] = $entity->get('field_mailer_sub_title')->value;
     $params['field_mailer_bcc'] = ($entity->get('field_mailer_bcc')->value != "") ? $entity->get('field_mailer_bcc')->value : "" ;
-    $params['body'] = $field_mailer_body;;
+    $params['body'] = $field_mailer_body_urls;
 
     // Who is this message from (sender address)?
     $from = $entity->get('field_mailer_sender_address')->value;
