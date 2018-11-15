@@ -5,7 +5,7 @@ Go to: admin/config/system/mailsystem
 DEFAULT MAIL SYSTEM  
 Formatter: Swift Mailer  
 Sender: Swift Mailer  
-Theme: BSOE Plain  
+Theme: default 
 
 Go to: /admin/config/swiftmailer/transport
 Transport types: SMTP

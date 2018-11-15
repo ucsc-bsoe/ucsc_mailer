@@ -42,16 +42,16 @@ function ucsc_mailer_mail($key, &$message, $params) {
 * Implements hook_entity_insert().
 */
 function ucsc_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
-  require_once("ucsc_mailer_sender_mail.php");
-  ucsc_mailer_sender_mail($entity);
+  require_once("ucsc_mailer_sender_send.php");
+  ucsc_mailer_sender_send($entity);
 }
 
 /**
 * Implements hook_entity_update().
 */
 function ucsc_mailer_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
-  require_once("ucsc_mailer_sender_mail.php");
-  ucsc_mailer_sender_mail($entity);
+  require_once("ucsc_mailer_sender_send.php");
+  ucsc_mailer_sender_send($entity);
 }
 
 /**

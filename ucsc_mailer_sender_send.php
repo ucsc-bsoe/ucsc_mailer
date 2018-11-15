@@ -1,8 +1,7 @@
 <?php
 use Drupal\Core\Render\Markup;
 
-function ucsc_mailer_sender_mail($entity) {
-
+function ucsc_mailer_sender_send($entity) {
   // Is this the mailer entity?
   if ($entity->bundle() === 'mailer') {
 
@@ -17,7 +16,7 @@ function ucsc_mailer_sender_mail($entity) {
 
     // Create the mailer body from the body field. Add markup from WYSIWYG.
     $field_mailer_body = Markup::create($entity->get('field_mailer_body')->value);
-    $field_mailer_sub_title = Markup::create($entity->get('field_mailer_sub_title')->value);
+    //$field_mailer_sub_title = Markup::create($entity->get('field_mailer_sub_title')->value);
 
     // Create some parameters we can use in the actual message..
     $params['node_title'] = $entity->label();
