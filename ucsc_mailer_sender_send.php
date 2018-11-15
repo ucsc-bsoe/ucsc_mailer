@@ -21,7 +21,7 @@ function ucsc_mailer_sender_send($entity) {
 
     global $base_path;
     $pattern = '/(src|href)=(\'|")' . preg_quote($base_path, '/') . '/';
-    $replacement = '$1=$2' . \Drupal\Core\Url::fromRoute('<front>', array(), array('absolute' => TRUE))->toString() . "Hello there";
+    $replacement = '$1=$2' . \Drupal\Core\Url::fromRoute('<front>', array(), array('absolute' => TRUE))->toString();
     $field_mailer_body_urls = \Drupal\Core\Render\Markup::create(preg_replace($pattern, $replacement, $field_mailer_body));
 
 
