@@ -7,5 +7,7 @@ package: UCSC
 dependencies:
   - mailsystem
   - swiftmailer
+  - workflows
+  - content_moderation
 install:
   - swiftmailer
