@@ -5,10 +5,7 @@ dependencies:
     module:
       - ucsc_mailer
   module:
-      - swiftmailer
-install:
-  - swiftmailer
-  - mailsystem
+    - menu_ui
 third_party_settings:
   menu_ui:
     available_menus:
@@ -18,6 +15,6 @@ name: Mailer
 type: mailer
 description: 'Allows mailer to send an email and keep a log of emails sent.'
 help: ''
-new_revision: false
-preview_mode: 0
+new_revision: true
+preview_mode: 1
 display_submitted: false
