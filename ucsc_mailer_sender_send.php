@@ -3,7 +3,7 @@ use Drupal\Core\Render\Markup;
 
 function ucsc_mailer_sender_send($entity) {
   // Is this the mailer entity?
-  if ($entity->bundle() === 'mailer' && $entity->get('moderation_state')->getString() === "Publish") {
+  if ($entity->bundle() === 'mailer' && $entity->get('moderation_state')->getString() === "published") {
 
     // Build mail manager.
     $mailManager = \Drupal::service('plugin.manager.mail');
