@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mailer_cc
+    - node.type.mailer
+  enforced:
+    module:
+      - ucsc_mailer
+id: node.mailer.field_mailer_cc
+field_name: field_mailer_cc
+entity_type: node
+bundle: mailer
+label: CC
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

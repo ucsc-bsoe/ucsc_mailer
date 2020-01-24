@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.mailer.field_mailer_cc
     - field.field.node.mailer.field_mailer_bcc
     - field.field.node.mailer.field_mailer_body
     - field.field.node.mailer.field_mailer_recipient
@@ -25,6 +26,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_mailer_cc:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_mailer_bcc:
     weight: 5
     label: above

@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.mailer.field_mailer_body
+    - field.field.node.mailer.field_mailer_cc
     - field.field.node.mailer.field_mailer_bcc
     - field.field.node.mailer.field_mailer_recipient
     - field.field.node.mailer.field_mailer_sender
@@ -28,7 +29,15 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
-  field_mailer_bcc:
+  field_mailer_cc:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+   field_mailer_bcc:
     weight: 5
     settings:
       size: 60

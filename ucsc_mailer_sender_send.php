@@ -29,6 +29,10 @@ function ucsc_mailer_sender_send($entity) {
     $params['field_mailer_sender_address'] = $entity->get('field_mailer_sender_address')->value;
     $params['field_mailer_sender'] = $entity->get('field_mailer_sender')->value;
     $params['field_mailer_sub_title'] = $entity->get('field_mailer_sub_title')->value;
+    
+    $params['field_mailer_cc'] = ($entity->get('field_mailer_cc')->value != "") ? $entity->get('field_mailer_cc')->value : "" ;
+    $params['body'] = $field_mailer_body_urls;
+
     $params['field_mailer_bcc'] = ($entity->get('field_mailer_bcc')->value != "") ? $entity->get('field_mailer_bcc')->value : "" ;
     $params['body'] = $field_mailer_body_urls;
 

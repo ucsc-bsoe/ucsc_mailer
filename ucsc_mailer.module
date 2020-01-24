@@ -23,6 +23,11 @@ function ucsc_mailer_mail($key, &$message, $params) {
 
       // Set the header 'From'
       $message['from'] = $message['headers']['From'] = (!empty($params['field_mailer_sender'])) ? Unicode::mimeHeaderEncode($params['field_mailer_sender'], TRUE) . ' <' . $params['field_mailer_sender_address'] . '>' : $params['field_mailer_sender_address'];
+      
+      // Set the header 'Cc'
+      if (!empty($params['field_mailer_cc'])) {
+         $message['headers']['Cc'] = $params['field_mailer_cc'];
+      }
 
       // Set the header 'Bcc'
       if (!empty($params['field_mailer_bcc'])) {
